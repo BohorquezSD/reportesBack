@@ -1,0 +1,2 @@
+INSERT INTO "mydb"."responsable" ("idresponsable", "nombre", "correo", "telefono") VALUES (E'1', E'Sebastian', E'sebastianbohorquez123@gmail.com', E'6986725');
+INSERT INTO "mydb"."actividad" ("idactividad", "descripcion", "fecharegistro", "fechalimite", "responsableid", "soporte", "estado", "responsable_idresponsable") VALUES (E'1', E'Esta es la descripcion', E'2019-02-08', E'2019-02-08', E'1', E'https://www.digitalocean.com', E'activo', E'1');
