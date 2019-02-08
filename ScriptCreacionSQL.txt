@@ -1,0 +1,49 @@
+	CREATE DATABASE "reporteActividades"
+    WITH 
+    OWNER = reportes
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Colombia.1252'
+    LC_CTYPE = 'Spanish_Colombia.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+	-- Schema mydb
+	-- -----------------------------------------------------
+	CREATE SCHEMA IF NOT EXISTS mydb;
+
+
+	-- -----------------------------------------------------
+	-- Table `mydb`.`Responsable`
+	-- -----------------------------------------------------
+	DROP TABLE IF EXISTS mydb.Responsable ;
+
+	CREATE TABLE IF NOT EXISTS mydb.Responsable (
+	  idResponsable INT NOT NULL,
+	  nombre VARCHAR(45) NULL,
+	  correo VARCHAR(45) NULL,
+	  telefono INT NULL,
+	  PRIMARY KEY (idResponsable),
+	  CONSTRAINT idResponsable_UNIQUE UNIQUE  (idResponsable) );
+	
+
+
+	-- -----------------------------------------------------
+	-- Table `mydb`.`Actividad`
+	-- -----------------------------------------------------
+
+
+	CREATE TABLE IF NOT EXISTS mydb.Actividad (
+	  idActividad INT NOT NULL,
+	  descripcion VARCHAR(45) NULL,
+	  fechaRegistro DATE NULL,
+	  fechaLimite DATE NULL,
+	  responsableId INT NULL,
+	  soporte VARCHAR(45) NULL,
+	  estado VARCHAR(45) NULL,
+	  Responsable_idResponsable INT NOT NULL,
+	  PRIMARY KEY (idActividad),
+	  CONSTRAINT fk_Actividad_Responsable
+		FOREIGN KEY (Responsable_idResponsable)
+		REFERENCES mydb.Responsable (idResponsable)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION);
